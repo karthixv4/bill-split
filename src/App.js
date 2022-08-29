@@ -6,6 +6,7 @@ import Home from './components/home/home';
 import Header from './components/header/header';
 import Register from './components/register/register';
 import AddGroup from './components/group/addGroup';
+import ViewGroup from './components/group/viewGroup';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
   <Route path="/" element={<Home></Home>}></Route>
   <Route path="/register" element={<Register></Register>}></Route>
   <Route path="/addGroup" element={<AddGroup></AddGroup>}></Route>
+  <Route path="/view/:id" element={<ViewGroup></ViewGroup>}></Route>
+  
 
  
 

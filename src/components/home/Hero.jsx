@@ -32,7 +32,7 @@ const Hero = () => {
   const dispatch = useDispatch();
 useEffect(()=>{
   console.log("hey")
-  dispatch(LoggedIn())
+  // dispatch(LoggedIn())
 },[])
   const classes = useStyles();
 
@@ -41,7 +41,7 @@ useEffect(()=>{
       <ReactPlayer
         url={video}
         playing
-        loop
+        // loop
         muted
         width="100%"
         height="100%"
@@ -56,7 +56,7 @@ useEffect(()=>{
           color="#fff"
         >
           <Typography variant="h3" component="h1" className={classes.title}>
-            Title Goes Here
+           Bill-Split
           </Typography>
           <Button color="primary" variant="contained">
             Click Me

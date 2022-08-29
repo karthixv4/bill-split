@@ -8,7 +8,9 @@ const initialState = {
     group:{
         name:"",
         members:[]
-    }
+    },
+    allGroups:[],
+    filteredGroups:[]
 }
 
 export const fetchAllUsers = createAsyncThunk("users/fetchAll",()=>{
@@ -34,6 +36,12 @@ export const createGroup = createAsyncThunk("users/save", (group) => {
         console.log("Success:", data);
       });
   });
+
+  export const fetchGroups = createAsyncThunk("groups/fetchAll",()=>{
+    return fetch("http://localhost:3002/Groups").then((response) =>
+    response.json()
+  );
+})
 
 const groupSlice = createSlice({
     name:"group",
@@ -67,6 +75,23 @@ const groupSlice = createSlice({
         },
         setGroupMembers:(state,action)=>{
             state.group.members=action.payload
+        },
+        filterGroupsForUser:(state,action)=>{
+          state.filteredGroups = []
+          let Groups = action.payload.groups;
+          const email = "ankit@gmail.com"
+          let members = (keys) => {
+            return keys==email
+           }
+          Groups.map((ele)=>{
+            ele.members.filter(members).forEach((val)=>{
+             state.filteredGroups.push({
+              id:ele.id,
+              name:ele.name,
+              members:ele.members
+             })
+            })
+          })
         }
     },
     extraReducers:(builder)=>{
@@ -76,7 +101,10 @@ const groupSlice = createSlice({
         builder.addCase(fetchUser.fulfilled,(state,action)=>{
             state.user=action.payload
         })
+        builder.addCase(fetchGroups.fulfilled,(state,action)=>{
+          state.allGroups=action.payload;
+        })
     }
 })
-export const {filterUsers,setSelectedUsers,setGroupName,setGroupMembers} = groupSlice.actions
+export const {filterUsers,setSelectedUsers,setGroupName,setGroupMembers,filterGroupsForUser} = groupSlice.actions
 export default groupSlice.reducer;
