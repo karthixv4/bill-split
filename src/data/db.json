@@ -1,0 +1,46 @@
+{
+  "Users": [
+    {
+      "id": 1,
+      "name": "Ankit Gupta",
+      "email": "ankit@gmail.com",
+      "password": "ankit@123!"
+    },
+    {
+      "id": 2,
+      "name": "Vignesh",
+      "email": "vignesh",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "name": "George",
+      "email": "george@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": 4,
+      "name": "vignesh",
+      "email": "vicky@gmail.com",
+      "password": "123"
+    }
+  ],
+  "Groups": [
+    {
+      "name": "Goa",
+      "members": [
+        "ankit@gmail.com",
+        "vignesh"
+      ],
+      "id": 1
+    },
+    {
+      "name": "Chennai",
+      "members": [
+        "ankit@gmail.com",
+        "vignesh"
+      ],
+      "id": 2
+    }
+  ]
+}
