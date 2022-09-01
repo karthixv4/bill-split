@@ -4,6 +4,12 @@ import { fetchGroups } from '../../reducers/groupSlice';
 import { filterGroupsForUser } from '../../reducers/groupSlice';
 import { useEffect } from 'react';
 import {  useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import './table.css';
 
 const Groups = () => {
     const dispatch = useDispatch();
@@ -15,26 +21,41 @@ const Groups = () => {
 // dispatch(filterGroupsForUser({groups}))
 //    },[groups])
   return (
-    <div>Groups
-        <button onClick={()=>{dispatch(filterGroupsForUser({groups}))}}>My groups</button>
+    <>
+     <button onClick={()=>{dispatch(filterGroupsForUser({groups}))}}>My groups</button>
+  
+    <div className='cardContainer'> 
+       
         {filteredGroups.map((ele)=>(
-            <div>
-                <a onClick={()=>navigate(`/view/${ele.id}`)}>
-            <h3 key={ele.id}>{ele.name}</h3>
+          
+                <a onClick={()=>navigate(`/view/${ele.id}`)} key={ele.id}>
+            <Card sx={{ maxWidth: 345 }}  key={ele.id}>
+             <CardActionArea>
+               <CardContent>
+                 <Typography gutterBottom variant="h5" component="div">
+                 {ele.name}
+                 </Typography>
+                 <Typography variant="body2" color="text.secondary">
+                   Lizards are a widespread group of squamate reptiles, with over 6,000
+                   species, ranging across all continents except Antarctica
+                 </Typography>
+               </CardContent>
+             </CardActionArea>
+             <CardActions>
+               <Button size="small" color="primary">
+                 Share
+               </Button>
+             </CardActions>
+           </Card>
             </a>
             
-            {
-                ele.members.map((ele)=>(
-                    <ul>
-                        <li key={ele}>{ele}</li>
-                    </ul>
-                ))
-            }
-            <br/>
-            </div>
+        
+            
         
         ))}
+
     </div>
+    </>
   )
 }
 

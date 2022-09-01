@@ -2,15 +2,20 @@ import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
 
 const initialState = {
     users:[],
-    user:[],
+    user:null,
     filteredUsers:[],
     selectedUsers:[],
     group:{
         name:"",
-        members:[]
+        members:[],
+        expense:[]
     },
     allGroups:[],
-    filteredGroups:[]
+    filteredGroups:[],
+    finalGroup:{
+      name:"",
+      members:[]
+    }
 }
 
 export const fetchAllUsers = createAsyncThunk("users/fetchAll",()=>{
@@ -92,6 +97,12 @@ const groupSlice = createSlice({
              })
             })
           })
+        },
+        addAdmintoMember:(state,action)=>{
+          state.group.members.push(action.payload)
+        },
+        removeAdmin:(state,action)=>{
+          state.group.members.pop();
         }
     },
     extraReducers:(builder)=>{
@@ -106,5 +117,5 @@ const groupSlice = createSlice({
         })
     }
 })
-export const {filterUsers,setSelectedUsers,setGroupName,setGroupMembers,filterGroupsForUser} = groupSlice.actions
+export const {filterUsers,setSelectedUsers,setGroupName,setGroupMembers,filterGroupsForUser,addAdmintoMember,removeAdmin} = groupSlice.actions
 export default groupSlice.reducer;

@@ -27,27 +27,85 @@
   ],
   "Groups": [
     {
+      "id": 1,
       "name": "Goa",
       "members": [
         "ankit@gmail.com",
-        "vignesh"
+        "vignesh",
+        "vicky@gmail.com"
       ],
-      "id": 1
+      "expense": [
+        {
+          "name": "Snacks",
+          "amount": "1300",
+          "sharedAmong": [
+            "ankit@gmail.com",
+            "vignesh"
+          ],
+          "toPay": [
+            {
+              "email": "ankit@gmail.com",
+              "amount": 650,
+              "paid": false
+            },
+            {
+              "email": "vignesh",
+              "amount": 650,
+              "paid": false
+            }
+          ]
+        },
+        {
+          "name": "Tickets",
+          "amount": "3000",
+          "sharedAmong": [
+            "ankit@gmail.com",
+            "vignesh"
+          ],
+          "toPay": [
+            {
+              "email": "ankit@gmail.com",
+              "amount": 1500,
+              "paid": false
+            },
+            {
+              "email": "vignesh",
+              "amount": 1500,
+              "paid": false
+            }
+          ]
+        }
+      ]
     },
     {
-      "name": "Chennai",
+      "id": 2,
+      "name": "Madras",
       "members": [
+        "vignesh",
+        "george@gmail.com",
         "ankit@gmail.com",
-        "vignesh"
+        "vicky@gmail.com"
       ],
-      "id": 2
+      "expense": []
     },
     {
       "name": "Blore",
       "members": [
-        "george@gmail.com"
+        "vignesh",
+        "ankit@gmail.com",
+        "vicky@gmail.com"
       ],
+      "expense": [],
       "id": 3
+    },
+    {
+      "name": "Sweden",
+      "members": [
+        "george@gmail.com",
+        "vicky@gmail.com"
+      ],
+      "expense": [],
+      "id": 4
     }
   ]
 }
